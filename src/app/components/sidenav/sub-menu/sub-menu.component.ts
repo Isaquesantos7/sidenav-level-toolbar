@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { INavbarData } from '../navbar/sidenavLevel';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-sub-menu',
@@ -15,11 +16,15 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   ],
   template: `
     <ul *ngIf="collapsed && data.items && data.items.length > 0"
+      [@submenu]="expanded 
+        ? {value: 'visible', params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '*'}} 
+        : {value: 'hidden', params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
       class="sublevel-nav"
     >
       <li *ngFor="let item of data.items" class="siblevel-nav-item">
         <a class="sublevel-nav-link"
           *ngIf="item.items && item.items.length > 0"
+          (click)="handlerClick(item)"
         >
           <i class="sublevel-link-icon fa fa-circle"></i>
           <span class="sublevel-link-text" *ngIf="collapsed">{{ item.label }}</span>
@@ -46,7 +51,22 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       </li>
     </ul>
   `,
-  styleUrl: '../sidenav.component.scss'
+  styleUrl: '../sidenav.component.scss',
+  animations: [
+    trigger('submenu', [
+      state('hidden', style({
+        height: 0,
+        overflow: 'hidden'
+      })),
+      state('visible', style({
+        height: '*'
+      })),
+      transition('visible <=> hidden', [style({overflow: 'hidden'}), 
+        animate('{{transitionParams}}')
+      ]),
+      transition('void => *', animate(0))
+    ])
+  ]
 })
 
 export class SubMenuComponent implements OnInit {
@@ -65,6 +85,19 @@ export class SubMenuComponent implements OnInit {
       
   }
 
-  constructor() {}
+  public handlerClick(item: any): void {
+    if (!this.multiple) {
+      if (this.data.items && this.data.items.length > 0) {
+        for (let modelItem of this.data.items ) {
+          if (item !== modelItem && modelItem.expanded) {
+            modelItem.expanded = false;
+          }
+        }
+      }
+    }
+
+    item.expanded = !item.expanded;
+  }
+
 
 }
