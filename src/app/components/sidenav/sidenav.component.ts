@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { navbarData } from './navbar/sidenav-data';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SideNavToggle } from '../../interfaces/sidenav';
 
 @Component({
@@ -10,6 +10,7 @@ import { SideNavToggle } from '../../interfaces/sidenav';
   imports: [
     NgFor,
     RouterLink,
+    RouterLinkActive,
     NgIf,
     NgClass
   ],
