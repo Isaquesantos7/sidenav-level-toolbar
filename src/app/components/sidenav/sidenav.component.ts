@@ -4,6 +4,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SideNavToggle } from '../../interfaces/sidenav';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { SubMenuComponent } from './sub-menu/sub-menu.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +14,8 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
     RouterLink,
     RouterLinkActive,
     NgIf,
-    NgClass
+    NgClass,
+    SubMenuComponent
   ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',

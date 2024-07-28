@@ -13,6 +13,11 @@
                 <i class="sidenav-link-icon {{ data.icon }}"></i>
                 <span class="sidenav-link-text" *ngIf="collapsed" @fadeInOut>{{ data.label }}</span>
             </a>
+        
+            <app-sub-menu
+                [data]="data"
+                [collapsed]="collapsed"
+            ></app-sub-menu>
         </li>
     </ul>
 </div>

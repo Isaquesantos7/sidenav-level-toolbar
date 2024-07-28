@@ -1,4 +1,6 @@
-export const navbarData = [
+import { INavbarData } from "./sidenavLevel";
+
+export const navbarData: INavbarData[] = [
     {
         routerlink: 'dashboard',
         icon: 'fal fa-home',
@@ -17,7 +19,17 @@ export const navbarData = [
     {
         routerlink: 'coupens',
         icon: 'fal fa-tags',
-        label: 'Coupens'
+        label: 'Coupens',
+        items: [
+            {
+                routerlink: 'list/coupens',
+                label: 'List Coupens'
+            },
+            {
+                routerlink: 'create/coupens',
+                label: 'Create Coupens'
+            }
+        ]
     },
     {
         routerlink: 'pages',
