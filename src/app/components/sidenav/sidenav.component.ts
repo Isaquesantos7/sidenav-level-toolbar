@@ -5,6 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SideNavToggle } from '../../interfaces/sidenav';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
+import { fadeInOut } from './navbar/sidenavLevel';
 
 @Component({
   selector: 'app-sidenav',
@@ -20,17 +21,7 @@ import { SubMenuComponent } from './sub-menu/sub-menu.component';
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate('350ms', style({opacity: 1}))
-      ]),
-      transition(':leave', [
-        style({opacity: 1}),
-        animate('350ms', style({opacity: 0}))
-      ])
-    ]),
-
+    fadeInOut,
     trigger('rotate', [
       transition(':enter', [
         animate('1000ms', keyframes([

@@ -10,7 +10,7 @@ export const navbarData: INavbarData[] = [
         routerlink: 'products',
         icon: 'fal fa-box-open',
         label: 'Products',
-        expanded: true,
+        expanded: false,
         items: [
             {
                 routerlink: 'products/level2.1',
@@ -31,7 +31,7 @@ export const navbarData: INavbarData[] = [
         routerlink: 'coupens',
         icon: 'fal fa-tags',
         label: 'Coupens',
-        expanded: true,
+        expanded: false,
         items: [
             {
                 routerlink: 'list/coupens',
@@ -57,7 +57,7 @@ export const navbarData: INavbarData[] = [
         routerlink: 'settings',
         icon: 'fal fa-cog',
         label: 'Settings',
-        expanded: true,
+        expanded: false,
         items: [
             {
                 routerlink: 'settings/profile',
