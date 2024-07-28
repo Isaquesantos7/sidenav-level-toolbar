@@ -47,6 +47,7 @@ export class SidenavComponent  implements OnInit{
 
   protected collapsed: boolean = false;
   protected screenwidth: number = 0;
+  protected multiple: boolean = false;
 
   protected navData = navbarData;
 
@@ -72,5 +73,16 @@ export class SidenavComponent  implements OnInit{
   public closeSideNav(): void {
     this.collapsed = false;
     this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenwidth})
+  }
+
+  public handlerClick(item: any): void {
+    if (!this.multiple) {
+      for (let modelItem of this.navData) {
+        if (item !== modelItem && modelItem.expanded) {
+          modelItem.expanded = false;
+        }
+      }
+    }
+    item.expanded = !item.expanded;
   }
 }

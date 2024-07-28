@@ -9,15 +9,35 @@
 
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a routerLink="/{{ data.routerlink }}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidenav-nav-link">
+            <a class="sidenav-nav-link"
+                *ngIf="data.items && data.items.length > 0"
+                (click)="handlerClick(data)"
+            >
+                <i class="sidenav-link-icon {{ data.icon }}"></i>
+                <span class="sidenav-link-text" *ngIf="collapsed" @fadeInOut>{{ data.label }}</span>
+                <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
+                    [ngClass]="!data.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
+                ></i>
+            </a>
+
+            <a class="sidenav-nav-link"
+                *ngIf="!data.items || (data.items && data.items.length === 0)" 
+                routerLink="/{{ data.routerlink }}" 
+                routerLinkActive="active" 
+                [routerLinkActiveOptions]="{exact: true}"
+            >
                 <i class="sidenav-link-icon {{ data.icon }}"></i>
                 <span class="sidenav-link-text" *ngIf="collapsed" @fadeInOut>{{ data.label }}</span>
             </a>
-        
-            <!-- <app-sub-menu
-                [data]="data"
-                [collapsed]="collapsed"
-            ></app-sub-menu> -->
+
+            <div *ngIf="collapsed && data.items && data.items.length > 0">
+                <app-sub-menu
+                    [data]="data"
+                    [collapsed]="collapsed"
+                    [multiple]="multiple"
+                    [expanded]="data.expanded"
+                ></app-sub-menu>
+            </div>
         </li>
     </ul>
 </div>

@@ -16,9 +16,11 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ],
   template: `
     <ul *ngIf="collapsed && data.items && data.items.length > 0"
-      [@submenu]="expanded 
-        ? {value: 'visible', params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '*'}} 
-        : {value: 'hidden', params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
+    [@submenu]="expanded
+      ? {value: 'visible', 
+        params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '*'}}
+      : {value: 'hidden', 
+        params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
       class="sublevel-nav"
     >
       <li *ngFor="let item of data.items" class="siblevel-nav-item">
@@ -28,7 +30,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         >
           <i class="sublevel-link-icon fa fa-circle"></i>
           <span class="sublevel-link-text" *ngIf="collapsed">{{ item.label }}</span>
-          <i *ngIf="item.items && collapsed" class="menu-collapsed-icon" [ngClass]="!item.expanded ? 'fal fa-angle-rigth' : 'fal fa-angle-down'" ]></i>
+          <i *ngIf="item.items && collapsed" class="menu-collapsed-icon" [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"></i>
         </a>
         
         <a class="sublevel-nav-link"
@@ -43,6 +45,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         
         <div *ngIf="item.items && item.items.length > 0">
           <app-sub-menu
+            [data]="item"]
             [collapsed]="collapsed"]
             [multiple]="multiple"]
             [expanded]="item.expanded"]
@@ -62,8 +65,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         height: '*'
       })),
       transition('visible <=> hidden', [style({overflow: 'hidden'}), 
-        animate('{{transitionParams}}')
-      ]),
+        animate('{{transitionParams}}')]),
       transition('void => *', animate(0))
     ])
   ]
