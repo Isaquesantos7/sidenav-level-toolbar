@@ -34,7 +34,7 @@ export const navbarData: INavbarData[] = [
         expanded: false,
         items: [
             {
-                routerlink: 'list/coupens',
+                routerlink: 'coupens',
                 label: 'List Coupens'
             },
             {

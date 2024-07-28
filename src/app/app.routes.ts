@@ -6,6 +6,7 @@ import { CoupensComponent } from './views/coupens/coupens.component';
 import { PageComponent } from './views/page/page.component';
 import { MediaComponent } from './views/media/media.component';
 import { SettingsComponent } from './views/settings/settings.component';
+import { CreateCoupensComponent } from './views/coupens/create-coupens/create-coupens.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,11 @@ export const routes: Routes = [
         path: 'coupens',
         component: CoupensComponent,
         title: 'Coupens'
+    },
+    {
+        path: 'create/coupens',
+        component: CreateCoupensComponent,
+        title: 'Create Coupens'
     },
     {
         path: 'pages',
