@@ -1,11 +1,11 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './navbar/sidenav-data';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SideNavToggle } from '../../interfaces/sidenav';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
-import { fadeInOut } from './navbar/sidenavLevel';
+import { fadeInOut, INavbarData } from './navbar/sidenavLevel';
 
 @Component({
   selector: 'app-sidenav',
@@ -42,6 +42,8 @@ export class SidenavComponent  implements OnInit{
 
   protected navData = navbarData;
 
+  constructor(private router: Router) {}
+
   /* Ajustando o sidenav automaticamente conforme a largura da janela. */
   @HostListener('window:resize', ['$event'])
   onResize(event: any): any {
@@ -67,6 +69,15 @@ export class SidenavComponent  implements OnInit{
   }
 
   public handlerClick(item: any): void {
+    this.shrinkItems(item);
+    item.expanded = !item.expanded;
+  }
+
+  public getActiveClass(data: INavbarData): string {
+    return this.router.url.includes(data.routerlink) ? 'active' : '' ;
+  }
+
+  public shrinkItems(item: INavbarData): void {
     if (!this.multiple) {
       for (let modelItem of this.navData) {
         if (item !== modelItem && modelItem.expanded) {
@@ -74,6 +85,5 @@ export class SidenavComponent  implements OnInit{
         }
       }
     }
-    item.expanded = !item.expanded;
   }
 }

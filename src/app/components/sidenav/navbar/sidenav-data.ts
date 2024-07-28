@@ -10,17 +10,6 @@ export const navbarData: INavbarData[] = [
         routerlink: 'products',
         icon: 'fal fa-box-open',
         label: 'Products',
-        expanded: false,
-        items: [
-            {
-                routerlink: 'products/level2.1',
-                label: 'Level 2.1',
-            },
-            {
-                routerlink: 'products/level1.2',
-                label: 'Level 1.2',
-            }
-        ]
     },
     {
         routerlink: 'statistics',
@@ -57,48 +46,5 @@ export const navbarData: INavbarData[] = [
         routerlink: 'settings',
         icon: 'fal fa-cog',
         label: 'Settings',
-        expanded: false,
-        items: [
-            {
-                routerlink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routerlink: 'settings/customize',
-                label: 'Customize'
-            },
-            {
-                routerlink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routerlink: 'settings/customize',
-                label: 'Customize'
-            },
-            {
-                routerlink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routerlink: 'settings/customize',
-                label: 'Customize'
-            },
-            {
-                routerlink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routerlink: 'settings/customize',
-                label: 'Customize'
-            },
-            {
-                routerlink: 'settings/profile',
-                label: 'Profile'
-            },
-            {
-                routerlink: 'settings/customize',
-                label: 'Customize'
-            }
-        ]
     },
 ];

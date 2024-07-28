@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { fadeInOut, INavbarData } from '../navbar/sidenavLevel';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -27,6 +27,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         <a class="sublevel-nav-link"
           *ngIf="item.items && item.items.length > 0"
           (click)="handlerClick(item)"
+          [ngClass]="getActiveClass(item)"]
         >
           <i class="sublevel-link-icon fa fa-circle"></i>
           <span class="sublevel-link-text" *ngIf="collapsed" @fadeInOut>{{ item.label }}</span>
@@ -84,6 +85,8 @@ export class SubMenuComponent implements OnInit {
   @Input() expanded: boolean | undefined;
   @Input() multiple: boolean = false;
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {
       
   }
@@ -102,5 +105,8 @@ export class SubMenuComponent implements OnInit {
     item.expanded = !item.expanded;
   }
 
+  public getActiveClass(item: INavbarData): string {
+    return this.router.url.includes(item.routerlink) ? 'active-sublevel' : '';
+  }
 
 }
