@@ -23,14 +23,14 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         params: {transitionParams: '400ms cubic-bezier(0.86, 0, 0.07, 1)', height: '0'}}"
       class="sublevel-nav"
     >
-      <li *ngFor="let item of data.items" class="siblevel-nav-item">
+      <li *ngFor="let item of data.items" class="sublevel-nav-item">
         <a class="sublevel-nav-link"
           *ngIf="item.items && item.items.length > 0"
           (click)="handlerClick(item)"
         >
           <i class="sublevel-link-icon fa fa-circle"></i>
           <span class="sublevel-link-text" *ngIf="collapsed">{{ item.label }}</span>
-          <i *ngIf="item.items && collapsed" class="menu-collapsed-icon" [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"></i>
+          <i *ngIf="item.items && collapsed" class="menu-collapse-icon" [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"></i>
         </a>
         
         <a class="sublevel-nav-link"
@@ -58,7 +58,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   animations: [
     trigger('submenu', [
       state('hidden', style({
-        height: 0,
+        height: '0',
         overflow: 'hidden'
       })),
       state('visible', style({

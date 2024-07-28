@@ -9,7 +9,18 @@ export const navbarData: INavbarData[] = [
     {
         routerlink: 'products',
         icon: 'fal fa-box-open',
-        label: 'Products'
+        label: 'Products',
+        expanded: true,
+        items: [
+            {
+                routerlink: 'products/level2.1',
+                label: 'Level 2.1',
+            },
+            {
+                routerlink: 'products/level1.2',
+                label: 'Level 1.2',
+            }
+        ]
     },
     {
         routerlink: 'statistics',
@@ -20,6 +31,7 @@ export const navbarData: INavbarData[] = [
         routerlink: 'coupens',
         icon: 'fal fa-tags',
         label: 'Coupens',
+        expanded: true,
         items: [
             {
                 routerlink: 'list/coupens',
@@ -44,6 +56,49 @@ export const navbarData: INavbarData[] = [
     {
         routerlink: 'settings',
         icon: 'fal fa-cog',
-        label: 'Settings'
+        label: 'Settings',
+        expanded: true,
+        items: [
+            {
+                routerlink: 'settings/profile',
+                label: 'Profile'
+            },
+            {
+                routerlink: 'settings/customize',
+                label: 'Customize'
+            },
+            {
+                routerlink: 'settings/profile',
+                label: 'Profile'
+            },
+            {
+                routerlink: 'settings/customize',
+                label: 'Customize'
+            },
+            {
+                routerlink: 'settings/profile',
+                label: 'Profile'
+            },
+            {
+                routerlink: 'settings/customize',
+                label: 'Customize'
+            },
+            {
+                routerlink: 'settings/profile',
+                label: 'Profile'
+            },
+            {
+                routerlink: 'settings/customize',
+                label: 'Customize'
+            },
+            {
+                routerlink: 'settings/profile',
+                label: 'Profile'
+            },
+            {
+                routerlink: 'settings/customize',
+                label: 'Customize'
+            }
+        ]
     },
 ];
