@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SideNavToggle } from './interfaces/sidenav';
 import { BodyComponent } from './components/body/body.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { BodyComponent } from './components/body/body.component';
   imports: [
     RouterOutlet,
     SidenavComponent,
-    BodyComponent
+    BodyComponent,
+    ToolbarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
