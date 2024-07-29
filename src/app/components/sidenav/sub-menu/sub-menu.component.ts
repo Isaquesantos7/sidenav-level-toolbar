@@ -25,13 +25,16 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     >
       <li *ngFor="let item of data.items" class="sublevel-nav-item">
         <a class="sublevel-nav-link"
+        (click)="handlerClick(item)"
           *ngIf="item.items && item.items.length > 0"
-          (click)="handlerClick(item)"
-          [ngClass]="getActiveClass(item)"]
+          [ngClass]="getActiveClass(item)"
         >
           <i class="sublevel-link-icon fa fa-circle"></i>
-          <span class="sublevel-link-text" *ngIf="collapsed" @fadeInOut>{{ item.label }}</span>
-          <i *ngIf="item.items && collapsed" class="menu-collapse-icon" [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"></i>
+          <span class="sublevel-link-text" @fadeInOut 
+            *ngIf="collapsed">{{item.label}}</span>
+          <i *ngIf="item.items && collapsed" class="menu-collapse-icon"
+            [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down'"
+          ></i>
         </a>
         
         <a class="sublevel-nav-link"
@@ -41,15 +44,16 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
           [routerLinkActiveOptions]="{exact: true}"
         >
           <i class="sublevel-link-icon fa fa-circle"></i>
-          <span class="sublevel-link-text" *ngIf="collapsed" @fadeInOut>{{ item.label }}</span>
+          <span class="sublevel-link-text" @fadeInOut 
+            *ngIf="collapsed">{{item.label}}</span>
         </a>
-        
+
         <div *ngIf="item.items && item.items.length > 0">
           <app-sub-menu
-            [data]="item"]
-            [collapsed]="collapsed"]
-            [multiple]="multiple"]
-            [expanded]="item.expanded"]
+            [data]="item"
+            [collapsed]="collapsed"
+            [multiple]="multiple"
+            [expanded]="item.expanded"
           ></app-sub-menu>
         </div>
       </li>

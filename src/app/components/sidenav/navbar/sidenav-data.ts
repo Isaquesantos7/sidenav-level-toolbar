@@ -10,6 +10,36 @@ export const navbarData: INavbarData[] = [
         routerlink: 'products',
         icon: 'fal fa-box-open',
         label: 'Products',
+        items: [
+            {
+                routerlink: 'products/level1.1',
+                label: 'Level 1.1',
+                items: [
+                    {
+                        routerlink: 'products/level2.1',
+                        label: 'Level 2.1',
+                    },
+                    {
+                        routerlink: 'products/level2.2',
+                        label: 'Level 2.2',
+                        items: [
+                            {
+                                routerlink: 'products/level3.1',
+                                label: 'Level 3.1'
+                            },
+                            {
+                                routerlink: 'products/level3.2',
+                                label: 'Level 3.2'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                routerlink: 'products/level1.2',
+                label: 'Level 1.2',
+            }
+        ]
     },
     {
         routerlink: 'statistics',
